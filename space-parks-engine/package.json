@@ -1,0 +1,26 @@
+{
+  "name": "space-parks-engine",
+  "version": "1.0.0",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "transpile": "tsc",
+    "start": "npm run transpile && node ./dist/index.js",
+    "build": "npm run transpile",
+    "prepare": "npm run build"
+  },
+  "author": "Dakota Alton",
+  "license": "ISC",
+  "description": "An engine for the Space Park game by KeyStone",
+  "devDependencies": {
+    "@types/uuid": "^8.3.4",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2"
+  }
+}
