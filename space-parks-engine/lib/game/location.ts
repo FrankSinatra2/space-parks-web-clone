@@ -1,4 +1,5 @@
-import { GainResource, SpendResource, DrawCard, MoveScoutLocation, gainResource, spendResource, gainController, moveScoutLocation, GainController, drawCard, DrawCardChoice } from '../engine/action'
+import { isMoonCrystal, isSeaCrystal, Resource } from '..';
+import { GainResource, SpendResource, DrawCard, MoveScoutLocation, gainResource, spendResource, gainController, moveScoutLocation, GainController, drawCard, DrawCardChoice, activateCard, ActivateCard } from '../engine/action'
 import { Player } from './player';
 import { sunCrystal, moonCrystal, seaCrystal, isSunCrystal, experiencePoint, fastTravelPass } from './resource';
 
@@ -8,7 +9,8 @@ export type LocationAction
   | DrawCard
   | MoveScoutLocation
   | GainController
-  | DrawCard;
+  | DrawCard
+  | ActivateCard;
 
 export type Location = {
   readonly guard: (x: Player) => boolean;
@@ -66,6 +68,19 @@ export const fusionFalls = (): Location => ({
   activeScout: false,
 });
 
+export const doubleFusionFalls = (): Location => ({
+  guard: (x: Player) => x.resources.some(isSeaCrystal) && x.resources.some(isMoonCrystal),
+  action: [
+    spendResource(seaCrystal, 1),
+    spendResource(moonCrystal, 1),
+    gainResource(experiencePoint, 3)
+  ],
+  name: 'Double Fusion Falls',
+  actionText: 'Gain EX for a sea&moon Crystal',
+  activeLocation: false,
+  activeScout: false,
+});
+
 export const astralArcade = (locationGetter: () => Location): Location => ({
   guard: (_: Player) => true,
   action: [
@@ -90,10 +105,28 @@ export const starlightStation = (choiceGetter: () => DrawCardChoice): Location =
   activeScout: false
 });
 
-export const outpostThirteen = (): Location => ({
-  guard: (_: Player) => true,
+export const outpostThirteen = (choiceGetter: () => number): Location => ({
+  guard: (x: Player) => {
+    const card = x.cards[choiceGetter()];
+    const crystalCountMap = (acc: Record<string, number>, x: Resource): Record<string, number> => {
+      if (!acc[x.type]) {
+        acc[x.type] = 0;
+      }
+      acc[x.type]++;
+      return acc;
+    };
+
+    const playerMap = x.resources.reduce(crystalCountMap, {});
+    const required = card.cost.reduce(crystalCountMap, {});
+
+    return ![
+      'sun-crystal',
+      'moon-crystal',
+      'sea-crystal'
+    ].some(x => playerMap[x] < required[x]);
+  },
   action: [
-    
+    activateCard(choiceGetter)
   ],
   name: 'Outpost 13',
   actionText: 'Activate a Badge',

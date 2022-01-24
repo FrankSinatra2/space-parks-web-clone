@@ -45,7 +45,7 @@ export const visitLocation = (game: Game, locationChoice: number): Game => {
     })
   });
 
-  newGame = processAdvanceTurns(newGame, advanceTurns());
+  // newGame = processAdvanceTurns(newGame, advanceTurns());
 
   return newGame;
 };

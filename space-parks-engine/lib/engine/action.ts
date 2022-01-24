@@ -81,6 +81,7 @@ export const gainController = (): GainController => ({ type: 'gain-controller' }
 export const moveScoutLocation = (dest: () => Location): MoveScoutLocation => ({ type: 'move-scout-location', dest });
 export const drawCard = (choiceGetter: () => DrawCardChoice): DrawCard => ({ type: 'draw-card', choice: choiceGetter });
 export const activateCard = (choice: () => number): ActivateCard => ({ type: 'activate-card', choice: choice });
+export const advanceRocketLocation = (to: Location, from: Location): AdvanceRocketLocation => ({ type: 'advance-rocket-location', to, from });
 export const advanceTurns = (): AdvanceTurns => ({ type: 'advance-turns' });
 export const askForOption = (options: string[]): AskForOption => ({ type: 'ask-for-option', options })
 
