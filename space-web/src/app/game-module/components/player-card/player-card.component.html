@@ -1,0 +1,33 @@
+
+
+
+<div class='player-card-container' [ngClass]='{"current": currentPlayer}'>
+  <div class='player-card-row'>
+    <span> {{player.name}} </span>
+    <span *ngIf="currentController"><img src="assets/icons/controller.png"></span>
+    <span> EXP: {{exp}} </span>
+  </div>
+
+  <div class="player-card-row">
+    <div class='player-card-row-item'>
+      <img src="assets/icons/sun-crystal.png">
+      <span> {{sunCrystals}} </span>
+    </div>
+
+    <div class='player-card-row-item'>
+      <img src="assets/icons/sea-crystal.png">
+      <span> {{seaCrystals}} </span>
+    </div>
+    
+    <div class='player-card-row-item'>
+      <img src="assets/icons/moon-crystal.png"> 
+      <span> {{moonCrystals}} </span>
+    </div>
+    
+    <div class='player-card-row-item'>
+      <img src="assets/icons/fast-travel.png"> 
+      <span> {{fastTravel}} </span>
+    </div>
+  </div>
+</div>
+

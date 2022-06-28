@@ -1,0 +1,24 @@
+
+
+<div class="login-container">
+    <div class="login-field-containers">
+        <div class="login-input-container">
+            <mat-form-field appearance="outline">
+                <mat-label> User Name </mat-label>
+                <input matInput required [(ngModel)]="username"/>
+            </mat-form-field>
+        </div>
+
+        <div class="login-input-container">
+            <mat-form-field appearance="outline">
+                <mat-label> Room Code </mat-label>
+                <input matInput required [(ngModel)]="room"/>
+            </mat-form-field>
+        </div>
+
+        <div class="login-input-container">
+            <button mat-button (click)="onJoinClicked()"> Join Game </button>
+        </div>
+
+    </div>
+</div>

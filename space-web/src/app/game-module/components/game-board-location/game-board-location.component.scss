@@ -1,0 +1,57 @@
+
+
+
+.game-board-location-container {
+  width: 200px;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+
+  background: #fefefe;
+  box-shadow: 2px 2px 1px 1px black;
+  border-radius: 5px;
+  padding: 5px;
+
+
+  .title-section {
+    width: fit-content;
+    align-self: center;
+  }
+
+  .body-section {
+    width: fit-content;
+    align-self: center;
+
+    .information-container {
+      display: flex;
+      flex-direction: column;
+      
+      .art-section {
+        align-self: center;
+        img {
+          width: 120px;
+          height: 120px;
+        }
+      }
+
+      .status-section {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        span {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  .action-section {
+    width: fit-content;
+    align-self: center;
+    justify-self: flex-end;
+  }
+}

@@ -1,0 +1,26 @@
+
+
+
+<div class='game-board-container' *ngIf="game$ | async as game">
+  
+  <div class='player-list-container game-section-container'>
+    <div class='player-list-row' *ngFor='let player of game.players; let i = index'>
+      <player-card [player]=player [currentPlayer]="i === game.currentPlayer" [currentController]="i === game.controllerOwner"></player-card>
+    </div>
+  </div>
+
+  <div class='board-container game-section-container'>
+    <div class='board-row board-first-row'>
+      <game-board-location [location]="game.locations[4]" (locationClicked)='onLocationClicked($event)'></game-board-location>
+      <game-board-location [location]="game.locations[5]" (locationClicked)='onLocationClicked($event)'></game-board-location>
+      <game-board-location [location]="game.locations[6]" (locationClicked)='onLocationClicked($event)'></game-board-location>
+    </div>
+
+    <div class='board-row'>
+      <game-board-location [location]="game.locations[0]" (locationClicked)='onLocationClicked($event)'></game-board-location>
+      <game-board-location [location]="game.locations[1]" (locationClicked)='onLocationClicked($event)'></game-board-location>
+      <game-board-location [location]="game.locations[2]" (locationClicked)='onLocationClicked($event)'></game-board-location>
+      <game-board-location [location]="game.locations[3]" (locationClicked)='onLocationClicked($event)'></game-board-location>
+    </div>
+  </div>
+</div>

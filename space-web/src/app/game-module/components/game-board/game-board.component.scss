@@ -1,0 +1,44 @@
+
+
+.game-board-container {
+
+  display: flex;
+  flex-direction: row;
+
+  .game-section-container {
+    padding: 20px;
+    border-style: groove;
+    border-radius: 10px;
+    background: darkcyan;
+
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .player-list-container {
+    .player-list-row {
+      margin-bottom: 15px;
+    }
+  }
+
+  .board-container {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    game-board-location {
+      margin: 5px;
+    }
+
+    .board-row {
+      width: fit-content;
+
+      display: flex;
+      flex-direction: row;
+    
+      &:first-of-type {
+        align-self: flex-end;
+      }
+    }
+  }
+}

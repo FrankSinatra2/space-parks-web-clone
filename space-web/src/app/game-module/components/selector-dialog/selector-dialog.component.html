@@ -1,0 +1,14 @@
+<h3 mat-dialog-title>{{data.title}}</h3>
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label> Options </mat-label>
+    <mat-select [(ngModel)]="selectedOption" name='option' required (change)="selectedOption = $event">
+      <mat-option *ngFor="let option of data.options | async" [value]=option>
+        {{option}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onSubmit()">Submit</button>
+</mat-dialog-actions>

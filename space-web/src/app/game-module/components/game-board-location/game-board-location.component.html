@@ -1,0 +1,27 @@
+
+
+<div class='game-board-location-container'>
+  <div class='title-section'>
+    <span>{{location.name}}</span>
+  </div>
+
+  <div class='body-section'>
+    
+    <div class='information-container'>
+      <div class='art-section'>
+        <img src={{artLocation}}/>
+      </div>
+
+      <div class='status-section'>
+        <span class='location-status' *ngIf=location.activeLocation> Active Location </span>
+        <span class='scout-status' *ngIf=location.activeScout> Scouted Location </span>
+      </div>
+    </div>
+  </div>
+
+
+  <div class='action-section'>
+    <button mat-raised-button (click)='onActionButtonClicked()'> {{location.actionText}} </button>
+  </div>
+</div>
+
